@@ -1,11 +1,11 @@
-FROM ubuntu:vivid
+FROM debian:jessie
 
 MAINTAINER "Dylan Miles" <dylan.g.miles@gmail.com>
 
 # Install MariaDB.
 RUN \
   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0xcbcb082a1bb943db && \
-  echo "deb http://ftp.wa.co.za/pub/mariadb/repo/10.0/ubuntu vivid main" > /etc/apt/sources.list.d/mariadb.list && \
+  echo "deb http://mariadb.biz.net.id//repo/10.1/debian sid main" > /etc/apt/sources.list.d/mariadb.list && \
   apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server && \
   rm -rf /var/lib/apt/lists/*
