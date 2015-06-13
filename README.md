@@ -3,7 +3,7 @@
 docker-mariadb is an Debian Docker image for MariaDB containers.
 
 ## Credits
-This image is forked from [Dylan Lindgren's MariaDB project](https://github.com/dylanlindgren/docker-mariadb) and also used [Dockerfile](https://github.com/dockerfile/mariadb) as a reference.
+This image is forked from [Dylan Lindgren's MariaDB project](https://github.com/dylanlindgren/docker-mariadb). The [Dockerfile](https://github.com/dockerfile/mariadb) was also used as a reference.
 
 
 ## Getting the image
