@@ -2,8 +2,8 @@
 
 docker-mariadb is an Ubunutu Docker image for MariaDB containers.
 
-## Credits and Thanks
-This image is forked from ![Dylan Lindgren's MariaDB project](https://github.com/dylanlindgren/docker-mariadb) and also uses a lot bits from ![Dockerfile](https://github.com/dockerfile/mariadb).
+## Credits
+This image is forked from [Dylan Lindgren's MariaDB project](https://github.com/dylanlindgren/docker-mariadb) and also uses a lot bits from [Dockerfile](https://github.com/dockerfile/mariadb).
 
 ## Image construction
 The image is formed from the following layers
@@ -31,9 +31,9 @@ The startup script (which is the containers default entrypoint) checks `/data/ma
 
 The steps that are performed to secure the database:
  - Sets the `root` password as `abc123` **Note - you should change this!!**
- - Sets full privilages for `root'@'172.17.42.1`. 
+ - Sets full privileges for `root'@'172.17.42.1`. 
  
-`172.17.41.1` is the IP address of the `docker0` interface on the docker host. So this allows you to connect from an OSX host through an ssh tunnel into the docker host and from there connect through to the container. This is great for getting up and running dev environment easily. 
+`172.17.41.1` is the IP address of the `docker0` interface on the docker host. So this allows you to connect from an OSX host through an ssh tunnel into the docker host and from there a connection to the MariaDB port of 3309 can be made into the container. This is great for getting up and running dev environment easily. 
 
 ## Creating and running the container
 To create and run the container:
@@ -64,8 +64,8 @@ The problem comes into play because the container runs as the user mysql (uid:99
 To get this working:
  - Create a directory on your host machine: `mkdir ~/Development/Storage/database`
  - Run `machine-docker ssh` and create a directory: `sudo mkdir /database` in the docker machine.
- - Open VirtualBox and create a shared folder mapping called *database* and mapped to the directory you created on your host osx `~/Development/Storage/database`
- - Now mount the directory with a uid and guid of 999 (The mysql uid). You can run this command from your host osx: `docker-machine ssh dev 'sudo mount -t vboxsf -o "defaults,uid=999,gid=999,rw" database /database'` 
+ - Open VirtualBox and create a shared folder mapping called `database` and mapped to the directory you created on your OSX host: `~/Development/Storage/database`
+ - Mount the directory with a uid and guid of 999 (The mysql uid). You can run this command from your OSX host: `docker-machine ssh dev 'sudo mount -t vboxsf -o "defaults,uid=999,gid=999,rw" database /database'` 
 
 
 ### Running as a Systemd service
