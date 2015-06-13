@@ -18,6 +18,7 @@ ADD config/my.cnf /etc/my.cnf
 
 # All the MariaDB data that you'd want to backup will be redirected here
 RUN mkdir -p /data/mariadb
+# Chown here, before setting as volume otherwise chown is not applied!!!
 RUN chown mysql:mysql /data/mariadb
 VOLUME ["/data/mariadb"]
 
@@ -30,8 +31,6 @@ COPY config/mariadb-start.sh /opt/bin/mariadb-start.sh
 COPY config/mariadb-setup.sql /opt/bin/mariadb-setup.sql
 RUN chmod u=rwx /opt/bin/mariadb-start.sh
 RUN chown mysql:mysql /opt/bin/mariadb-start.sh /opt/bin/mariadb-setup.sql
-
-#RUN echo "root:docker" | chpasswd
 
 # run all subsequent commands as the mysql user
 USER mysql
