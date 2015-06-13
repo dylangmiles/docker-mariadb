@@ -8,3 +8,4 @@ if [ ! "$(ls -A $directory)" ]; then
 else
     /usr/bin/mysqld_safe
 fi
+
