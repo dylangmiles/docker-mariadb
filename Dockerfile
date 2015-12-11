@@ -3,9 +3,12 @@ FROM debian:jessie
 MAINTAINER "Dylan Miles" <dylan.g.miles@gmail.com>
 
 # Install MariaDB.
+ENV MARIADB_MAJOR 10.1
+#ENV MARIADB_VERSION 10.1.8+maria-1~jessie
+
 RUN \
   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0xcbcb082a1bb943db && \
-  echo "deb http://mariadb.biz.net.id//repo/10.1/debian sid main" > /etc/apt/sources.list.d/mariadb.list && \
+  echo "deb http://mariadb.biz.net.id//repo/$MARIADB_MAJOR/debian jessie main" > /etc/apt/sources.list.d/mariadb.list && \
   apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server && \
   rm -rf /var/lib/apt/lists/*
